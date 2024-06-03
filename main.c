@@ -50,7 +50,10 @@ void traversalPostOrder(struct node *root) {
 }
 
 int main() {
-    // Mbahnya tree (Supermarket)
+    // Semakin menjorok ke kanan, berarti itu anaknya
+    // paham kan? paham doong
+    // masa gk paham -_-
+    // Contohnya, ini Mbahnya tree (Supermarket)
     struct node *root = buatNode("Supermarket");
 
         struct node *makanan = masukkanKiri(root, "Makanan");
