@@ -56,38 +56,35 @@ int main() {
     // Contohnya, ini Mbahnya tree (Supermarket)
     struct node *root = buatNode("Supermarket");
 
-        struct node *makanan = masukkanKiri(root, "Makanan");
+        struct node *makanan = masukkanKiri(root,"makanan");
+            struct node *kaleng = masukkanKiri(makanan,"kaleng");
+                struct node *lauk = masukkanKiri(kaleng,"lauk");
+                    struct node *ikan = masukkanKiri(lauk,"ikan");
+                        masukkanKiri(ikan,"tuna");
+                        masukkanKanan(ikan,"sarden");
+                    masukkanKanan(lauk,"rendang");
+            
+                struct node *buah = masukkanKanan(kaleng,"buah");
+                    masukkanKiri(buah,"nanas");
+                    struct node *apel = masukkanKanan(buah,"apel");
+                        masukkanKiri(apel,"pir");
+                                            
+            struct node *cemilan = masukkanKanan(makanan,"cemilan");
+                masukkanKiri(cemilan,"rentengan");
+                struct node *kiloan = masukkanKanan(cemilan,"kiloan");
+                    masukkanKiri(kiloan,"jelly");
+                    masukkanKanan(kiloan,"kacang-kacangan");
 
-            struct node *kaleng = masukkanKiri(makanan, "Kaleng");
+        struct node *minuman = masukkanKanan(root,"minuman");
+            struct node *berperisa = masukkanKiri(minuman,"berperisa");
+                masukkanKiri(berperisa,"yogurt");
+                struct node *kopi = masukkanKanan(berperisa,"kopi");
+                    masukkanKiri(kopi,"kopi susu");
 
-                struct node *lauk = masukkanKiri(kaleng, "Lauk");
-                    masukkanKiri(lauk, "Sarden");
-                    masukkanKanan(lauk, "Rendang");
-                    masukkanKanan(lauk, "Tuna");
+            struct node *bersoda = masukkanKanan(minuman,"bersoda");
+                masukkanKiri(bersoda,"cola");
+                masukkanKanan(bersoda,"soda kopi");
 
-                struct node *buah = masukkanKanan(kaleng, "Buah");
-                    masukkanKiri(buah, "Nanas");
-                    masukkanKanan(buah, "Leci");
-
-                masukkanKanan(kaleng, "Kornet");
-
-            struct node *cemilan = masukkanKanan(makanan, "Cemilan");
-                masukkanKiri(cemilan, "Rentengan");
-                struct node *kiloan = masukkanKanan(cemilan, "Kiloan");
-                    masukkanKiri(kiloan,"Jelly");
-                    masukkanKanan(kiloan,"Kacang-kacangan");
-
-        struct node *minuman = masukkanKanan(root, "Minuman");
-            struct node *berperisa = masukkanKiri(minuman, "Berperisa");
-                masukkanKiri(berperisa, "Teh");
-                masukkanKanan(berperisa, "Yogurt");
-                masukkanKanan(berperisa, "Kopi");
-
-            struct node *bersoda = masukkanKanan(minuman, "Bersoda");
-                masukkanKiri(bersoda, "Cola");
-                masukkanKanan(bersoda, "Teh Soda");
-
-            masukkanKanan(minuman, "Air Mineral");
 
     printf("Traversal InOrder \n");
     traversalInOrder(root);
