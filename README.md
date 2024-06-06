@@ -1,6 +1,11 @@
 # Tugas Besar Banget Sumpah dah | Semester 2
+### Table of Contents
 
-## Problem yang ada
+- [Main.c](#Main.c)
+- [Main_v2.c](#Main_v2.c)
+
+## Main.c
+### Problem yang ada
 
 - Fungsi Apalagi yang perlu dimasukkan, supaya lebih beragam <br>
 
@@ -15,3 +20,6 @@ _nanti aja kalo mau dimasukkin lagi sisanya_
 > _Traversal PreOrder_ <br><br> Supermarket -> makanan -> kaleng -> lauk -> ikan -> tuna -> sarden -> rendang -> buah -> nanas -> apel -> pir -> cemilan -> rentengan -> kiloan -> jelly -> kacang-kacangan -> minuman -> berperisa -> yogurt -> kopi -> kopi susu -> bersoda -> cola -> soda kopi -> 
 
 > _Traversal PostOrder_ <br><br> tuna -> sarden -> ikan -> rendang -> lauk -> nanas -> pir -> apel -> buah -> kaleng -> rentengan -> jelly -> kacang-kacangan -> kiloan -> cemilan -> makanan -> yogurt -> kopi susu -> kopi -> berperisa -> cola -> soda kopi -> bersoda -> minuman -> Supermarket -> 
+<br>
+
+## Main_v2.c
