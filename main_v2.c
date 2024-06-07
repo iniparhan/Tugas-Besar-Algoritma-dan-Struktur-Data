@@ -98,18 +98,26 @@ struct node* cariSibling(struct node* root, char *nama) {
     return cariSibling(root->kanan, nama);
 }
 
+// Fungsi untuk mencetak jalur
+void cetakJalur(struct node* jalur[], int panjang) {
+    for (int i = 0; i < panjang; i++) {
+        printf("%s -> ", jalur[i]->data.nama);
+    }
+    printf("\n");
+}
+
 // Fungsi untuk menemukan jalur dari root ke node dengan nama tertentu
-int cari_jalur(struct node* root, char *nama) {
+int cari_jalur(struct node* root, char *nama, struct node* jalur[], int panjang) {
     if (root == NULL) return 0;
-    printf("%s -> ", root->data.nama);
+    jalur[panjang] = root;
+    panjang++;
     if (strcmp(root->data.nama, nama) == 0) {
-        printf("\n");
+        cetakJalur(jalur, panjang);
         return 1;
     }
-    if ((root->kiri && cari_jalur(root->kiri, nama)) || (root->kanan && cari_jalur(root->kanan, nama))) {
+    if ((root->kiri && cari_jalur(root->kiri, nama, jalur, panjang)) || (root->kanan && cari_jalur(root->kanan, nama, jalur, panjang))) {
         return 1;
     }
-    printf("<- "); // Backtracking step
     return 0;
 }
 
@@ -170,7 +178,8 @@ int main() {
     // Pemanggilan Fungsi untuk menampilkan jalur dari root ke barang yang dituju
     char *cariNama = "Sabun Cair";
     printf("\nJalur dari root ke nama %s:\n", cariNama);
-    if (!cari_jalur(root, cariNama)) {
+    struct node* jalur[100];
+    if (!cari_jalur(root, cariNama, jalur, 0)) {
         printf("Nama %s tidak ditemukan di tree.\n", cariNama);
     }
 
