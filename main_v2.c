@@ -122,12 +122,30 @@ int main() {
     struct node* bahanMakanan = masukkanKanan(root, "Bahan Makanan", 0, 0, "Kategori");
 
     // Menambahkan barang ke kategori Kebutuhan Sehari-hari
-    masukkanKiri(kebutuhanSehariHari, "Sabun Mandi", 15000.00, 20, "Kebutuhan Sehari-hari");
-    masukkanKanan(kebutuhanSehariHari, "Shampoo", 25000.00, 15, "Kebutuhan Sehari-hari");
-    masukkanKiri(kebutuhanSehariHari->kanan, "Pasta Gigi", 10000.00, 30, "Kebutuhan Sehari-hari");
+    struct node* dapur = masukkanKiri(kebutuhanSehariHari, "Dapur", 0, 0, "Kebutuhan Sehari-hari");
+    masukkanKiri(kebutuhanSehariHari->kiri, "Sabun Cuci Piring", 10000.00, 10, "Kebutuhan Sehari-hari");
+    masukkanKanan(kebutuhanSehariHari->kiri, "Spons", 10000.00, 5, "Kebutuhan Sehari-hari");
+    struct node* kamarMandi = masukkanKanan(kebutuhanSehariHari, "Kamar Mandi", 0, 0, "Kebutuhan Sehari-hari");
+    struct node* vitaminRambut = masukkanKanan(kebutuhanSehariHari->kanan, "Vitamin Rambut", 0, 0, "Kebutuhan Sehari-hari");
+    masukkanKiri(kamarMandi->kanan, "Conditioner", 35000.00, 20, "Kebutuhan Sehari-hari");
+    masukkanKanan(kamarMandi->kanan, "Shampoo", 30000.00, 25, "Kebutuhan Sehari-hari");
+    struct node* sabunMandi = masukkanKiri(kebutuhanSehariHari->kanan, "Sabun Mandi", 0, 0, "Kebutuhan Sehari-hari");
+    masukkanKiri(kamarMandi->kiri, "Sabun Cair", 15000.00, 14, "Kebutuhan Sehari-hari");
+    masukkanKanan(kamarMandi->kiri, "Sabun Batang", 3000.00, 17, "kebutuhan Sehari-hari");
 
     // Menambahkan barang ke kategori Bahan Makanan
-    masukkanKiri(bahanMakanan, "Beras 5kg", 60000.00, 10, "Bahan Makanan");
+    struct node* Beras = masukkanKiri(bahanMakanan, "Beras", 0, 0, "Bahan Makanan");
+    masukkanKiri(bahanMakanan->kiri, "Beras Putih", 60000.00, 12, "Bahan Makanan");
+    masukkanKanan(bahanMakanan->kiri, "Beras Merah", 70000.00, 15, "Bahan Makanan");
+    struct node* Lauk = masukkanKanan(bahanMakanan, "Lauk", 0, 0, "Bahan Makanan");
+    struct node* ayamSeekor = masukkanKiri(bahanMakanan->kanan, "Ayam Seekor", 40000.00, 10, "Bahan Makanan");
+    masukkanKanan(Lauk->kiri, "Dada Ayam", 20000.00, 10, "Bahan Makanan");
+    struct node* pahaAyam = masukkanKiri(Lauk->kiri, "Paha Ayam", 0, 0, "Bahan Makanan");
+    masukkanKiri(ayamSeekor->kiri, "500 gram", 16000, 12, "Bahan Makanan");
+    masukkanKanan(ayamSeekor->kiri, "1000 gram", 32000, 20, "Bahan Makanan");
+    struct node* beef = masukkanKanan(bahanMakanan->kanan, "Beef", 0, 0, "Bahan Makanan");
+    struct node* wagyu = masukkanKiri(Lauk->kanan, "Wagyu", 0, 0, "Bahan Makanan");
+    masukkanKiri(beef->kiri, "Slice", 54000.00, 30, "Bahan Makanan");
 
     // Pemanggilan Fungsi In-order Traversal
     printf("In-order Traversal:\n");
@@ -145,12 +163,12 @@ int main() {
     printf("\n");
 
     // Pemanggilan Fungsi untuk mencari barang yang lebih dari harga 20000
-    float cari_harga = 20000.00;
+    float cari_harga = 40000.00;
     printf("\nData barang dengan harga %.2f atau lebih:\n", cari_harga);
     cariNode(root, cari_harga);
 
     // Pemanggilan Fungsi untuk menampilkan jalur dari root ke barang yang dituju
-    char *cariNama = "Sabun Mandi";
+    char *cariNama = "Sabun Cair";
     printf("\nJalur dari root ke nama %s:\n", cariNama);
     if (!cari_jalur(root, cariNama)) {
         printf("Nama %s tidak ditemukan di tree.\n", cariNama);
