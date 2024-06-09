@@ -130,15 +130,15 @@ int main() {
 
             // Menambahkan barang ke kategori Kebutuhan Sehari-hari
             struct node* dapur = masukkanKiri(kebutuhanSehariHari, "Dapur", 0, 0, "Kebutuhan Sehari-hari");
-                masukkanKiri(kebutuhanSehariHari->kiri, "Sabun Cuci Piring", 10000.00, 10, "Kebutuhan Sehari-hari");
-                masukkanKanan(kebutuhanSehariHari->kiri, "Spons", 10000.00, 5, "Kebutuhan Sehari-hari");
+                masukkanKiri(dapur, "Sabun Cuci Piring", 10000.00, 10, "Kebutuhan Sehari-hari");
+                masukkanKanan(dapur, "Spons", 10000.00, 5, "Kebutuhan Sehari-hari");
             struct node* kamarMandi = masukkanKanan(kebutuhanSehariHari, "Kamar Mandi", 0, 0, "Kebutuhan Sehari-hari");
-                struct node* vitaminRambut = masukkanKanan(kebutuhanSehariHari->kanan, "Vitamin Rambut", 0, 0, "Kebutuhan Sehari-hari");
-                    masukkanKiri(kamarMandi->kanan, "Conditioner", 35000.00, 20, "Kebutuhan Sehari-hari");
-                    masukkanKanan(kamarMandi->kanan, "Shampoo", 30000.00, 25, "Kebutuhan Sehari-hari");
-                struct node* sabunMandi = masukkanKiri(kebutuhanSehariHari->kanan, "Sabun Mandi", 0, 0, "Kebutuhan Sehari-hari");
-                    masukkanKiri(kamarMandi->kiri, "Sabun Cair", 15000.00, 14, "Kebutuhan Sehari-hari");
-                    masukkanKanan(kamarMandi->kiri, "Sabun Batang", 3000.00, 17, "kebutuhan Sehari-hari");
+                struct node* vitaminRambut = masukkanKanan(kamarMandi, "Vitamin Rambut", 0, 0, "Kebutuhan Sehari-hari");
+                    masukkanKiri(vitaminRambut, "Conditioner", 35000.00, 20, "Kebutuhan Sehari-hari");
+                    masukkanKanan(vitaminRambut, "Shampoo", 30000.00, 25, "Kebutuhan Sehari-hari");
+                struct node* sabunMandi = masukkanKiri(kamarMandi, "Sabun Mandi", 0, 0, "Kebutuhan Sehari-hari");
+                    masukkanKiri(sabunMandi, "Sabun Cair", 15000.00, 14, "Kebutuhan Sehari-hari");
+                    masukkanKanan(sabunMandi, "Sabun Batang", 3000.00, 17, "kebutuhan Sehari-hari");
     
         struct node* bahanMakanan = masukkanKanan(root, "Bahan Makanan", 0, 0, "Kategori");
             // Menambahkan barang ke kategori Bahan Makanan
