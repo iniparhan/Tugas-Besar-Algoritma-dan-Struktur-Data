@@ -31,15 +31,25 @@ struct node* buatNode(char *nama, float harga, int stok, char *kategori) {
 // Fungsi untuk menambahkan node di posisi kiri
 struct node *masukkanKiri(struct node *root, char *nama, float harga, int stok, char *kategori) {
     if (root == NULL) return NULL;
-    root->kiri = buatNode(nama, harga, stok, kategori);
-    return root->kiri;
+    if (root->kiri == NULL) {
+        root->kiri = buatNode(nama, harga, stok, kategori);
+        return root->kiri;
+    } 
+    // Jika sudah ada kiri dan kanan, node tidak ditambahkan
+    printf("Node tidak dapat ditambahkan di kiri karena sudah ada dua anak.\n");
+    return NULL;
 }
 
 // Fungsi untuk menambahkan node di posisi kanan
 struct node *masukkanKanan(struct node *root, char *nama, float harga, int stok, char *kategori) {
     if (root == NULL) return NULL;
-    root->kanan = buatNode(nama, harga, stok, kategori);
-    return root->kanan;
+    if (root->kanan == NULL) {
+        root->kanan = buatNode(nama, harga, stok, kategori);
+        return root->kanan;
+    }
+    // Jika sudah ada kiri dan kanan, node tidak ditambahkan
+    printf("Node tidak dapat ditambahkan di kanan karena sudah ada dua anak.\n");
+    return NULL;
 }
 
 // Fungsi untuk melakukan in-order traversal
