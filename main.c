@@ -99,8 +99,9 @@ int hitungTinggi(struct node* root) {
 
 // Fungsi untuk mencari sibling dari node dengan nama tertentu
 struct node* cariSibling(struct node* root, char *nama) {
-    if (root == NULL || root->kiri == NULL || root->kanan == NULL) return NULL;
-    if ((strcmp(root->kiri->data.nama, nama) == 0 && root->kanan != NULL) || (strcmp(root->kanan->data.nama, nama) == 0 && root->kiri != NULL)) {
+    if (root == NULL || (root->kiri == NULL && root->kanan == NULL)) return NULL;
+    if ((strcmp(root->kiri->data.nama, nama) == 0 && root->kanan != NULL) ||
+        (strcmp(root->kanan->data.nama, nama) == 0 && root->kiri != NULL)) {
         return (strcmp(root->kiri->data.nama, nama) == 0) ? root->kanan : root->kiri;
     }
     struct node* sibling = cariSibling(root->kiri, nama);
@@ -125,10 +126,32 @@ int cari_jalur(struct node* root, char *nama, struct node* jalur[], int panjang)
         cetakJalur(jalur, panjang);
         return 1;
     }
-    if ((root->kiri && cari_jalur(root->kiri, nama, jalur, panjang)) || (root->kanan && cari_jalur(root->kanan, nama, jalur, panjang))) {
+    if ((root->kiri && cari_jalur(root->kiri, nama, jalur, panjang)) || 
+        (root->kanan && cari_jalur(root->kanan, nama, jalur, panjang))) {
         return 1;
     }
     return 0;
+}
+
+// Fungsi untuk mencetak tree secara visual
+void printTree(struct node *root, int tingkat) {
+    if (root == NULL) return;
+
+    // Cetak spasi sesuai dengan tingkat
+    for (int i = 0; i < tingkat; i++) {
+        if (i == tingkat - 1) {
+            printf("|-- ");
+        } else {
+            printf("|   ");
+        }
+    }
+
+    // Cetak nama barang
+    printf("%s\n", root->data.nama);
+
+    // Cetak anak kiri dan kanan secara rekursif
+    printTree(root->kiri, tingkat + 1);
+    printTree(root->kanan, tingkat + 1);
 }
 
 int main() {
@@ -142,6 +165,7 @@ int main() {
             struct node* dapur = masukkanKiri(kebutuhanSehariHari, "Dapur", 0, 0, "Kebutuhan Sehari-hari");
                 masukkanKiri(dapur, "Sabun Cuci Piring", 10000.00, 10, "Kebutuhan Sehari-hari");
                 masukkanKanan(dapur, "Spons", 10000.00, 5, "Kebutuhan Sehari-hari");
+                masukkanKanan(dapur, "Sikat WC", 15000.00, 5, "Kebutuhan Sehari-hari");
             struct node* kamarMandi = masukkanKanan(kebutuhanSehariHari, "Kamar Mandi", 0, 0, "Kebutuhan Sehari-hari");
                 struct node* vitaminRambut = masukkanKanan(kamarMandi, "Vitamin Rambut", 0, 0, "Kebutuhan Sehari-hari");
                     masukkanKiri(vitaminRambut, "Conditioner", 35000.00, 20, "Kebutuhan Sehari-hari");
@@ -165,8 +189,12 @@ int main() {
                     struct node* wagyu = masukkanKiri(Lauk->kanan, "Wagyu", 0, 0, "Bahan Makanan");
                         masukkanKiri(beef->kiri, "Slice", 54000.00, 30, "Bahan Makanan");
 
+     // ini visual 3
+    printf("\nVisual Tree:\n");
+    printTree(root, 0);
+
     // Pemanggilan Fungsi In-order Traversal
-    printf("In-order Traversal:\n");
+    printf("\nIn-order Traversal:\n");
     inorderTraversal(root);
     printf("\n");
 
@@ -185,6 +213,11 @@ int main() {
     printf("\nData barang dengan harga %.2f atau lebih:\n", cari_harga);
     cariNode(root, cari_harga);
 
+
+    // Pemanggilan Fungsi untuk menampilkan tinggi tree 
+    printf("\nTinggi tree: %d\n", hitungTinggi(root));
+
+
     // Pemanggilan Fungsi untuk menampilkan jalur dari root ke barang yang dituju
     char *cariNama = "Sabun Cair";
     printf("\nJalur dari root ke nama %s:\n", cariNama);
@@ -192,9 +225,6 @@ int main() {
     if (!cari_jalur(root, cariNama, jalur, 0)) {
         printf("Nama %s tidak ditemukan di tree.\n", cariNama);
     }
-
-    // Pemanggilan Fungsi untuk menampilkan tinggi tree 
-    printf("\nTinggi tree: %d\n", hitungTinggi(root));
 
     // Pemanggilan Fungsi untuk menampilkan sibling atau saudara yang 1 parent
     struct node* sibling = cariSibling(root, cariNama);
