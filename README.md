@@ -39,10 +39,11 @@ Isi Fungsinya sebagai berikut :
 ![Screenshot 2024-06-10 113443](https://github.com/iniparhan/Tugas-Besar-Banget-Semester-2/assets/105894704/428c3910-939b-4dc7-8ffc-f534a657a461)
 
 - Mencari dan menampilkan node berdasarkan harga tertentu
-> _Data barang dengan harga 20000.00 atau lebih:_ <br><br> Nama: Beras Putih, Harga: 60000.00, Stok: 12, Kategori: Bahan Makanan<br>
-Nama: Beras Merah, Harga: 70000.00, Stok: 15, Kategori: Bahan Makanan<br>
-Nama: Ayam Seekor, Harga: 40000.00, Stok: 10, Kategori: Bahan Makanan<br>
-Nama: Slice, Harga: 54000.00, Stok: 30, Kategori: Bahan Makanan<br>
+> _Data barang dengan harga 40000.00 atau lebih:_ <br><br> 
+Nama: Beras Putih, Harga: 60000.00, Stok: 12, Kategori: Bahan Makanan   
+Nama: Beras Merah, Harga: 70000.00, Stok: 15, Kategori: Bahan Makanan   
+Nama: Ayam Seekor, Harga: 40000.00, Stok: 10, Kategori: Bahan Makanan   
+Nama: Slice, Harga: 54000.00, Stok: 30, Kategori: Bahan Makanan
 
 - Menghitung tinggi tree
 > _Tinggi tree:_ 6
